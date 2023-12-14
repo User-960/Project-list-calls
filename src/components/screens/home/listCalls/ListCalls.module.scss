@@ -4,13 +4,13 @@
 	border-radius: 8px;
 	background-color: $white;
 	padding: 24px 0px 52px;
+
+	padding-left: 40px;
 }
 
 .navList {
 	display: flex;
-	justify-content: space-between;
-
-	padding: 0px 40px 20px;
+	padding: 0px 40px 20px 0px;
 }
 
 .navListColumn {
@@ -20,8 +20,96 @@
 	opacity: 87%;
 }
 
+.navListType,
+.itemType {
+	max-width: 54px;
+	width: 100%;
+}
+
+.navListTime,
+.itemTime {
+	max-width: 88px;
+	width: 100%;
+}
+
+.navListEmployee,
+.itemEmployee {
+	max-width: 129px;
+	width: 100%;
+}
+
+.navListCall,
+.itemCall {
+	max-width: 325px;
+	width: 100%;
+}
+
+.navListSource,
+.itemSource {
+	max-width: 214px;
+	width: 100%;
+}
+
+.navListEstimation,
+.itemEstimation {
+	max-width: 461px;
+	width: 100%;
+}
+
 .listCalls {
 }
 
 .listCallsItem {
+	display: flex;
+	padding: 20px 40px 20px 0px;
+	border-top: 1px solid $grey-light;
+}
+
+.itemTypeCallIcon {
+	width: 24px;
+	height: 24px;
+}
+
+.itemAvatar {
+	width: 32px;
+	height: 32px;
+}
+
+.itemTime,
+.itemCall,
+.itemDuration,
+.itemSource {
+	font-size: 15px;
+	line-height: 21px;
+}
+
+.itemTime,
+.itemCall,
+.itemDuration {
+	color: $blue-dark;
+}
+
+.itemSource {
+	color: $marine;
+}
+
+.itemEstimationBlock {
+	width: 70px;
+	height: 26px;
+
+	border-radius: 4px;
+	padding: 6px 8px;
+
+	font-size: 14px;
+	line-height: 14px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.itemEstimationSuccess {
+	color: $green;
+	border: 1px solid $green;
+	background-color: $green-light;
 }
