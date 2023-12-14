@@ -1,0 +1,17 @@
+@import 'src/assets/styles/variables';
+
+.mainWrapper {
+	position: relative;
+	min-height: 100%;
+
+	.contentWrapper {
+		display: flex;
+		flex-direction: column;
+
+		max-width: $desktop;
+		width: 100%;
+
+		padding: 25px 55px 210px 55px;
+		margin: 0 auto;
+	}
+}
