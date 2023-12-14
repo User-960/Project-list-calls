@@ -6,8 +6,8 @@ const Filter = () => {
 	return (
 		<>
 			<div className={styles.filterWrapper}>
-				<div>Все типы</div>
-				<div>3 дня</div>
+				<div className={styles.filterType}>Все типы</div>
+				<div className={styles.filterDays}>3 дня</div>
 			</div>
 		</>
 	)

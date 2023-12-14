@@ -5,15 +5,15 @@ import styles from './ListCalls.module.scss'
 const ListCalls = () => {
 	return (
 		<>
-			<div>
+			<div className={styles.listCallsWrapper}>
 				<div className={styles.navList}>
-					<div>Тип</div>
-					<div>Время</div>
-					<div>Сотрудник</div>
-					<div>Звонок</div>
-					<div>Источник</div>
-					<div>Оценка</div>
-					<div>Длительность</div>
+					<div className={styles.navListColumn}>Тип</div>
+					<div className={styles.navListColumn}>Время</div>
+					<div className={styles.navListColumn}>Сотрудник</div>
+					<div className={styles.navListColumn}>Звонок</div>
+					<div className={styles.navListColumn}>Источник</div>
+					<div className={styles.navListColumn}>Оценка</div>
+					<div className={styles.navListColumn}>Длительность</div>
 				</div>
 
 				<ul className={styles.listCalls}>

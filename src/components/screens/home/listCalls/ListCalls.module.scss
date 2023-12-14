@@ -1,6 +1,23 @@
+@import 'src/assets/styles/variables';
+
+.listCallsWrapper {
+	border-radius: 8px;
+	background-color: $white;
+	padding: 24px 0px 52px;
+}
+
 .navList {
 	display: flex;
 	justify-content: space-between;
+
+	padding: 0px 40px 20px;
+}
+
+.navListColumn {
+	font-size: 14px;
+	line-height: 20.72px;
+	color: $marine;
+	opacity: 87%;
 }
 
 .listCalls {
