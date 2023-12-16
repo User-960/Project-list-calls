@@ -11,17 +11,21 @@ export const useGetCalls = () => {
 		['getListCalls'],
 		() => ListCallsService.getListCalls(),
 		{
-			onSuccess: ({ data }: any) => console.log(data),
+			onSuccess: ({ data }) => setListCalls(data.results),
 			onError: () => console.log('Error in database')
 		}
 	)
+
+	const queryListCalls = async () => {
+		await mutateAsync()
+	}
 
 	return useMemo(
 		() => ({
 			isLoading,
 			error,
-			mutateAsync
+			queryListCalls
 		}),
-		[isLoading, error, mutateAsync]
+		[isLoading, error, queryListCalls]
 	)
 }

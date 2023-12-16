@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+	images: {
+		domains: ['lk.skilla.ru']
+	},
+	reactStrictMode: true
 }
 
 module.exports = nextConfig

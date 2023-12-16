@@ -7,11 +7,11 @@ import {
 } from 'react'
 import { createContext } from 'react'
 
-import { TypeListCalls } from '@/interfaces/calls'
+import { ICall } from '@/interfaces/calls'
 
 type TypeContext = {
-	listCalls: TypeListCalls[]
-	setListCalls: Dispatch<SetStateAction<TypeListCalls[]>>
+	listCalls: ICall[]
+	setListCalls: Dispatch<SetStateAction<ICall[]>>
 }
 
 export const ListCallsContext = createContext<TypeContext>({
@@ -20,7 +20,7 @@ export const ListCallsContext = createContext<TypeContext>({
 })
 
 const ListCallsProvider: FC<PropsWithChildren> = ({ children }) => {
-	const [listCalls, setListCalls] = useState<TypeListCalls[]>([])
+	const [listCalls, setListCalls] = useState<ICall[]>([])
 
 	return (
 		<ListCallsContext.Provider value={{ listCalls, setListCalls }}>
