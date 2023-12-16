@@ -1,5 +1,7 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+
+import { ListCallsContext } from '@/components/providers/ListCallsProvider'
 
 import avatarOne from '../../../../../public/images/avatarOne.jpg'
 import outgoingCall from '../../../../../public/images/outgoingCall.svg'
@@ -9,6 +11,12 @@ import styles from './ListCalls.module.scss'
 const cn = require('clsx')
 
 const ListCalls = () => {
+	const { listCalls } = useContext(ListCallsContext)
+
+	useEffect(() => {
+		console.log(listCalls)
+	}, [])
+
 	return (
 		<>
 			<div className={styles.listCallsWrapper}>
