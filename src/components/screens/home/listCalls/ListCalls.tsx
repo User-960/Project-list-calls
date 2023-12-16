@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import React, { useEffect } from 'react'
 
+import Loader from '@/ui/loader/Loader'
+
 import { useGetCalls } from '@/components/hooks/useGetCalls'
 
 import avatarOne from '../../../../../public/images/avatarOne.jpg'
@@ -43,7 +45,9 @@ const ListCalls = () => {
 				</div>
 
 				{isLoading ? (
-					'Loading...'
+					<div className={styles.loaderWrapper}>
+						<Loader />
+					</div>
 				) : (
 					<ul className={styles.listCalls}>
 						<li className={styles.listCallsItem}>
