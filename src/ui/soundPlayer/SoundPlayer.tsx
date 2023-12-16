@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 import { IconContext } from 'react-icons'
 import { AiFillPauseCircle, AiFillPlayCircle } from 'react-icons/ai'
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi'
@@ -8,7 +8,11 @@ import audioFinishGame from '../../assets/audio/audioFinishGame.mp3'
 
 import styles from './SoundPlayer.module.scss'
 
-const SoundPlayer: FC = () => {
+interface ISoundPlayerProps {
+	closeSoundPlayer: () => void
+}
+
+const SoundPlayer: FC<ISoundPlayerProps> = ({ closeSoundPlayer }) => {
 	const [isPlaying, setIsPlaying] = useState(false)
 	const [time, setTime] = useState({
 		min: '',
@@ -100,8 +104,7 @@ const SoundPlayer: FC = () => {
 
 			<div className={styles.btnWrapper}>
 				<button className={styles.downloadBtn}></button>
-
-				<button className={styles.closeBtn}></button>
+				<button className={styles.closeBtn} onClick={closeSoundPlayer}></button>
 			</div>
 		</div>
 	)

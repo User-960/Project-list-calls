@@ -134,3 +134,19 @@
 	border: 1px solid $red;
 	background-color: $red-light;
 }
+
+.itemDuration {
+	display: flex;
+	align-items: center;
+}
+
+.playButton,
+.pauseButton {
+	margin: 0 8px;
+	width: 24px;
+	height: 24px;
+
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url('../../../../../public/images/play.svg');
+}

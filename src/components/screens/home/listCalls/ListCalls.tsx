@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Loader from '@/ui/loader/Loader'
 import SoundPlayer from '@/ui/soundPlayer/SoundPlayer'
@@ -25,6 +25,7 @@ const ListCalls = () => {
 	const { isLoading, queryListCalls } = useGetCalls()
 	const { listCalls } = useListCalls()
 	const { queryRecord } = useGetRecord()
+	const [openSoundPlayer, setOpenSoundPlayer] = useState<boolean>(false)
 
 	useEffect(() => {
 		queryListCalls()
@@ -40,7 +41,6 @@ const ListCalls = () => {
 	return (
 		<>
 			<div className={styles.listCallsWrapper}>
-				<SoundPlayer />
 				<div className={styles.navList}>
 					<div className={cn(styles.navListColumn, styles.navListType)}>
 						Тип
@@ -155,8 +155,25 @@ const ListCalls = () => {
 								</div>
 
 								<div className={styles.itemDuration}>
-									{call.record && call.partnership_id ? <SoundPlayer /> : ''}
-									{formatDuration(call.time)}
+									{call.record && call.partnership_id ? (
+										<>
+											{!openSoundPlayer && (
+												<button
+													className={styles.playButton}
+													onClick={() => setOpenSoundPlayer(true)}
+												></button>
+											)}
+											{!openSoundPlayer && <p>{formatDuration(call.time)}</p>}
+										</>
+									) : (
+										<p>{formatDuration(call.time)}</p>
+									)}
+
+									{call.record && call.partnership_id && openSoundPlayer && (
+										<SoundPlayer
+											closeSoundPlayer={() => setOpenSoundPlayer(false)}
+										/>
+									)}
 								</div>
 							</li>
 						))}
