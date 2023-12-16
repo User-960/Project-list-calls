@@ -56,3 +56,10 @@ interface IAbuse {
 		}
 	]
 }
+
+export interface ICallRecord {
+	id: number
+	call_id: number
+	record_id: string
+	partnership_id: number
+}

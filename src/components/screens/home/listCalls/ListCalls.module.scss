@@ -56,10 +56,19 @@
 	width: 100%;
 }
 
-.navListEstimation,
+/* .navListEstimation,
 .itemEstimation {
 	max-width: 461px;
 	width: 100%;
+} */
+
+.navListDuration,
+.itemDuration {
+	max-width: 461px;
+	width: 100%;
+
+	display: flex;
+	justify-content: flex-end;
 }
 
 .listCalls {

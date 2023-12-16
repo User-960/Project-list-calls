@@ -2,8 +2,10 @@ import Image from 'next/image'
 import React, { useEffect } from 'react'
 
 import Loader from '@/ui/loader/Loader'
+import SoundPlayer from '@/ui/soundPlayer/SoundPlayer'
 
 import { useGetCalls } from '@/components/hooks/useGetCalls'
+import { useGetRecord } from '@/components/hooks/useGetRecord'
 import { useListCalls } from '@/components/hooks/useListCalls'
 
 import avatarOne from '../../../../../public/images/avatarOne.jpg'
@@ -22,18 +24,23 @@ const cn = require('clsx')
 const ListCalls = () => {
 	const { isLoading, queryListCalls } = useGetCalls()
 	const { listCalls } = useListCalls()
+	const { queryRecord } = useGetRecord()
 
 	useEffect(() => {
 		queryListCalls()
+		// queryRecord()
 	}, [])
 
-	useEffect(() => {
-		console.log(listCalls.map(call => console.log(call)))
-	}, [listCalls])
+	// useEffect(() => {
+	// 	console.log(
+	// 		listCalls.map(call => console.log(call.record, call.partnership_id))
+	// 	)
+	// }, [listCalls])
 
 	return (
 		<>
 			<div className={styles.listCallsWrapper}>
+				<SoundPlayer />
 				<div className={styles.navList}>
 					<div className={cn(styles.navListColumn, styles.navListType)}>
 						Тип
@@ -53,7 +60,9 @@ const ListCalls = () => {
 					<div className={cn(styles.navListColumn, styles.navListEstimation)}>
 						Оценка
 					</div>
-					<div className={cn(styles.navListColumn)}>Длительность</div>
+					<div className={cn(styles.navListColumn, styles.navListDuration)}>
+						Длительность
+					</div>
 				</div>
 
 				{isLoading ? (
@@ -146,6 +155,7 @@ const ListCalls = () => {
 								</div>
 
 								<div className={styles.itemDuration}>
+									{call.record && call.partnership_id ? <SoundPlayer /> : ''}
 									{formatDuration(call.time)}
 								</div>
 							</li>

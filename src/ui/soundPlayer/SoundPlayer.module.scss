@@ -1,0 +1,107 @@
+@import 'src/assets/styles/variables';
+
+.soundPlayer {
+	background-color: $blue-light;
+	max-width: 350px;
+	padding: 12px 18px;
+	border-radius: 48px;
+
+	display: flex;
+	justify-content: space-between;
+}
+
+.playPauseBtnWrapper {
+	display: flex;
+	align-items: center;
+}
+
+.playButton,
+.pauseButton {
+	margin: 0 8px;
+	width: 24px;
+	height: 24px;
+
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.playButton {
+	background-image: url('../../../public/images/play.svg');
+}
+
+.pauseButton {
+	background-image: url('../../../public/images/pause.svg');
+}
+
+.timeWrapper {
+	display: flex;
+	align-items: center;
+}
+
+.time {
+	weight: 400;
+	font-size: 15px;
+	line-height: 21.75px;
+	color: $blue-medium;
+
+	display: flex;
+	align-items: center;
+}
+
+.btnWrapper {
+	margin-left: 12px;
+	display: flex;
+	align-items: center;
+}
+
+.downloadBtn {
+	width: 24px;
+	height: 24px;
+
+	background-image: url('../../../public/images/download.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+
+	transition: background-image 0.2s ease-in-out;
+	cursor: pointer;
+}
+
+.downloadBtn:hover {
+	background-image: url('../../../public/images/downloadBlue.svg');
+}
+
+.closeBtn {
+	margin-left: 12px;
+	width: 24px;
+	height: 24px;
+
+	background-image: url('../../../public/images/close.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+
+	transition: background-image 0.2s ease-in-out;
+	cursor: pointer;
+}
+
+.closeBtn:hover {
+	background-image: url('../../../public/images/closeBlue.svg');
+}
+
+.timeline {
+	width: 100%;
+}
+
+input[type='range'].timeline::-webkit-slider-thumb {
+	-webkit-appearance: none !important;
+	height: 0px;
+	width: 0px;
+	opacity: 0;
+	background-color: #002cfb;
+}
+
+input[type='range'].timeline::-webkit-slider-runnable-track {
+	height: 4px;
+	border: 1px solid none;
+	border-radius: 50px;
+	box-shadow: none;
+}
