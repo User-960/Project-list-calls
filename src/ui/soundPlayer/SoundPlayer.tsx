@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 import useSound from 'use-sound'
 
-import audioFinishGame from '../../assets/audio/audioFinishGame.mp3'
+import audioMock from '../../assets/audio/audioMock.mp3'
 
 import styles from './SoundPlayer.module.scss'
 
@@ -26,7 +26,7 @@ const SoundPlayer: FC<ISoundPlayerProps> = ({
 
 	const [seconds, setSeconds] = useState()
 
-	const [play, { pause, duration, sound }] = useSound(audioFinishGame)
+	const [play, { pause, duration, sound }] = useSound(audioMock)
 
 	useEffect(() => {
 		if (duration) {
@@ -67,6 +67,10 @@ const SoundPlayer: FC<ISoundPlayerProps> = ({
 
 	return (
 		<div className={styles.soundPlayer}>
+			{/* <audio id='audio' controls>
+				<source src={audioMock} type='audio/ogg; codecs=vorbis' />
+			</audio> */}
+
 			<div className={styles.time}>
 				<p>
 					{currTime.min}:{currTime.sec}
