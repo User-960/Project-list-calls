@@ -165,7 +165,9 @@ const ListCalls = () => {
 													}}
 												></button>
 											)}
-											{!openSound && <p>{formatDuration(call.time)}</p>}
+											{openSound !== call.id && (
+												<p>{formatDuration(call.time)}</p>
+											)}
 										</>
 									) : (
 										<p>{formatDuration(call.time)}</p>
