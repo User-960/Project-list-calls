@@ -78,6 +78,13 @@
 	display: flex;
 	padding: 20px 40px 20px 0px;
 	border-top: 1px solid $grey-light;
+
+	transition: background-color 0.15s ease-in-out;
+	cursor: pointer;
+}
+
+.listCallsItem:hover {
+	background-color: #f8fafd;
 }
 
 .itemTypeCallIcon {
