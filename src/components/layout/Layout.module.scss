@@ -11,7 +11,15 @@
 		max-width: $desktop;
 		width: 100%;
 
-		padding: 25px 55px 210px 55px;
+		padding: 25px 40px 210px 40px;
 		margin: 0 auto;
+	}
+}
+
+@media (max-width: 780px) {
+	.mainWrapper {
+		.contentWrapper {
+			padding: 25px 10px 100px 10px;
+		}
 	}
 }

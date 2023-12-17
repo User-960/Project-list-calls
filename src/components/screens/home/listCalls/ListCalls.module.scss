@@ -40,7 +40,7 @@
 
 .navListTime {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 }
 
 .navListEmployee,
@@ -78,7 +78,7 @@
 
 .navListDuration {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 }
 
 .listCalls {
@@ -182,4 +182,118 @@
 
 .durationUpArrow {
 	background-image: url('../../../../../public/images/upArrow.svg');
+}
+
+@media (max-width: 1200px) {
+	.navListCall,
+	.itemCall {
+		max-width: 200px;
+		width: 100%;
+	}
+
+	.navListSource,
+	.itemSource {
+		max-width: 120px;
+		width: 100%;
+	}
+}
+
+@media (max-width: 1050px) {
+	.navListType,
+	.itemType {
+		max-width: 40px;
+		width: 100%;
+	}
+
+	.navListTime,
+	.itemTime {
+		max-width: 70px;
+		width: 100%;
+	}
+
+	.navListEmployee,
+	.itemEmployee {
+		max-width: 100px;
+		width: 100%;
+	}
+}
+
+@media (max-width: 950px) {
+	.navListEmployee,
+	.itemEmployee {
+		max-width: 80px;
+		width: 100%;
+	}
+
+	.navListCall,
+	.itemCall {
+		max-width: 250px;
+		width: 100%;
+	}
+
+	.navListSource,
+	.itemSource {
+		max-width: 100px;
+		width: 100%;
+	}
+
+	.navListDuration,
+	.itemDuration {
+		max-width: 360px;
+		width: 100%;
+	}
+}
+
+@media (max-width: 880px) {
+	.itemTime,
+	.itemCall,
+	.itemDuration,
+	.itemSource {
+		font-size: 13px;
+		line-height: 21px;
+	}
+}
+
+@media (max-width: 780px) {
+	.navListCall,
+	.itemCall {
+		max-width: 100px;
+		width: 100%;
+	}
+}
+
+@media (max-width: 670px) {
+	.listCallsWrapper {
+		padding-left: 10px;
+	}
+
+	.listCallsItem {
+		padding: 20px 15px 20px 0px;
+	}
+
+	.navList {
+		display: flex;
+		padding: 0px 15px 20px 0px;
+	}
+
+	.itemEstimationColumn {
+		max-width: 100px;
+		width: 100%;
+	}
+}
+
+@media (max-width: 620px) {
+	.navListEstimation,
+	.navListSource,
+	.itemEstimationBlock,
+	.itemSource {
+		display: none;
+	}
+}
+
+@media (max-width: 450px) {
+	.navListEmployee,
+	.itemEmployee {
+		display: none;
+	}
 }
