@@ -15,7 +15,7 @@ import noAnswerCall from '../../../../../public/images/noAnswerCall.svg'
 import outgoingCall from '../../../../../public/images/outgoingCall.svg'
 
 import styles from './ListCalls.module.scss'
-import NavList from './navList/navList'
+import NavList from './navList/NavList'
 import { formatDate } from '@/helpers/formatDate'
 import { formatDuration } from '@/helpers/formatDuration'
 import { formatPhone } from '@/helpers/formatPhone'

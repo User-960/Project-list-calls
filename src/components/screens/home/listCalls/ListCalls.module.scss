@@ -157,3 +157,19 @@
 	background-position: center;
 	background-image: url('../../../../../public/images/play.svg');
 }
+
+.durationBtn {
+	width: 24px;
+	height: 24px;
+
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.durationDownArrow {
+	background-image: url('../../../../../public/images/downArrow.svg');
+}
+
+.durationUpArrow {
+	background-image: url('../../../../../public/images/upArrow.svg');
+}

@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { useListCalls } from '@/components/hooks/useListCalls'
 
 import styles from '../ListCalls.module.scss'
 
+import { ICall } from '@/interfaces/calls'
+
 const cn = require('clsx')
 
 const NavList = () => {
-	const { listCalls, downloadRecord, filteredListCalls } = useListCalls()
+	const {
+		listCalls,
+		downloadRecord,
+		filteredListCalls,
+		setFilteredListCalls,
+		sortDurationUpDown,
+		setSortDurationUpDown
+	} = useListCalls()
 
 	return (
 		<>
@@ -30,6 +39,17 @@ const NavList = () => {
 				</div>
 				<div className={cn(styles.navListColumn, styles.navListDuration)}>
 					Длительность
+					{sortDurationUpDown === 'up' ? (
+						<button
+							onClick={() => setSortDurationUpDown('down')}
+							className={cn(styles.durationBtn, styles.durationUpArrow)}
+						></button>
+					) : (
+						<button
+							onClick={() => setSortDurationUpDown('up')}
+							className={cn(styles.durationBtn, styles.durationDownArrow)}
+						></button>
+					)}
 				</div>
 			</div>
 		</>

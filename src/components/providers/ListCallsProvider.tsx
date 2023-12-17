@@ -19,6 +19,9 @@ type TypeContext = {
 	setDownloadRecord: Dispatch<SetStateAction<string>>
 	currentTypeCallFilter: string
 	setCurrentTypeCallFilter: Dispatch<SetStateAction<string>>
+
+	sortDurationUpDown: 'down' | 'up'
+	setSortDurationUpDown: Dispatch<SetStateAction<'down' | 'up'>>
 }
 
 export const ListCallsContext = createContext<TypeContext>({
@@ -29,7 +32,10 @@ export const ListCallsContext = createContext<TypeContext>({
 	downloadRecord: '',
 	setDownloadRecord: () => {},
 	currentTypeCallFilter: '',
-	setCurrentTypeCallFilter: () => {}
+	setCurrentTypeCallFilter: () => {},
+
+	sortDurationUpDown: 'down',
+	setSortDurationUpDown: () => {}
 })
 
 const ListCallsProvider: FC<PropsWithChildren> = ({ children }) => {
@@ -38,6 +44,10 @@ const ListCallsProvider: FC<PropsWithChildren> = ({ children }) => {
 	const [downloadRecord, setDownloadRecord] = useState<string>('')
 	const [currentTypeCallFilter, setCurrentTypeCallFilter] =
 		useState<string>('allCalls')
+
+	const [sortDurationUpDown, setSortDurationUpDown] = useState<'down' | 'up'>(
+		'down'
+	)
 
 	useEffect(() => {
 		listCalls.forEach(call => {
@@ -57,6 +67,20 @@ const ListCallsProvider: FC<PropsWithChildren> = ({ children }) => {
 		})
 	}, [currentTypeCallFilter])
 
+	useEffect(() => {
+		if (sortDurationUpDown === 'down') {
+			filteredListCalls.sort((call1, call2) =>
+				call1.time > call2.time ? 1 : -1
+			)
+		}
+
+		if (sortDurationUpDown === 'up') {
+			filteredListCalls.sort((call1, call2) =>
+				call1.time < call2.time ? 1 : -1
+			)
+		}
+	}, [sortDurationUpDown])
+
 	return (
 		<ListCallsContext.Provider
 			value={{
@@ -67,7 +91,10 @@ const ListCallsProvider: FC<PropsWithChildren> = ({ children }) => {
 				downloadRecord,
 				setDownloadRecord,
 				currentTypeCallFilter,
-				setCurrentTypeCallFilter
+				setCurrentTypeCallFilter,
+
+				sortDurationUpDown,
+				setSortDurationUpDown
 			}}
 		>
 			{children}
