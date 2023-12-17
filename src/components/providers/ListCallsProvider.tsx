@@ -12,24 +12,24 @@ import { ICall } from '@/interfaces/calls'
 type TypeContext = {
 	listCalls: ICall[]
 	setListCalls: Dispatch<SetStateAction<ICall[]>>
-	listRecords: any[]
-	setListRecords: Dispatch<SetStateAction<any[]>>
+	downloadRecord: string
+	setDownloadRecord: Dispatch<SetStateAction<string>>
 }
 
 export const ListCallsContext = createContext<TypeContext>({
 	listCalls: [],
 	setListCalls: () => {},
-	listRecords: [],
-	setListRecords: () => {}
+	downloadRecord: '',
+	setDownloadRecord: () => {}
 })
 
 const ListCallsProvider: FC<PropsWithChildren> = ({ children }) => {
 	const [listCalls, setListCalls] = useState<ICall[]>([])
-	const [listRecords, setListRecords] = useState<any[]>([])
+	const [downloadRecord, setDownloadRecord] = useState<string>('')
 
 	return (
 		<ListCallsContext.Provider
-			value={{ listCalls, setListCalls, listRecords, setListRecords }}
+			value={{ listCalls, setListCalls, downloadRecord, setDownloadRecord }}
 		>
 			{children}
 		</ListCallsContext.Provider>

@@ -1,7 +1,4 @@
-import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
-import { IconContext } from 'react-icons'
-import { AiFillPauseCircle, AiFillPlayCircle } from 'react-icons/ai'
-import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi'
+import { FC, useEffect, useState } from 'react'
 import useSound from 'use-sound'
 
 import audioFinishGame from '../../assets/audio/audioFinishGame.mp3'
@@ -10,9 +7,13 @@ import styles from './SoundPlayer.module.scss'
 
 interface ISoundPlayerProps {
 	closeSoundPlayer: () => void
+	downloadRecord: string
 }
 
-const SoundPlayer: FC<ISoundPlayerProps> = ({ closeSoundPlayer }) => {
+const SoundPlayer: FC<ISoundPlayerProps> = ({
+	closeSoundPlayer,
+	downloadRecord
+}) => {
 	const [isPlaying, setIsPlaying] = useState(false)
 	const [time, setTime] = useState({
 		min: '',
@@ -55,10 +56,10 @@ const SoundPlayer: FC<ISoundPlayerProps> = ({ closeSoundPlayer }) => {
 	}, [sound])
 
 	const playingButton = () => {
-		if (isPlaying) {
+		if (isPlaying && downloadRecord) {
 			pause()
 			setIsPlaying(false)
-		} else {
+		} else if (!isPlaying && downloadRecord) {
 			play()
 			setIsPlaying(true)
 		}

@@ -2,22 +2,23 @@ import { useMutation } from '@tanstack/react-query'
 import { useMemo } from 'react'
 
 import { useListCalls } from './useListCalls'
+import { ICallRecord } from '@/interfaces/calls'
 import ListCallsService from '@/services/listCalls.service'
 
 export const useGetRecord = () => {
-	const { listCalls, setListCalls } = useListCalls()
+	const { listCalls, setListCalls, setDownloadRecord } = useListCalls()
 
 	const { isLoading, error, mutateAsync } = useMutation(
 		['getRecord'],
-		({ record, partnership_id }: any) =>
-			ListCallsService.getRecord(record, partnership_id),
+		({ recordId, partnershipId }: ICallRecord) =>
+			ListCallsService.getRecord(recordId, partnershipId),
 		{
-			onSuccess: ({ data }) => console.log(data),
+			onSuccess: ({ data }) => setDownloadRecord(data),
 			onError: () => console.log('Error in database')
 		}
 	)
 
-	const queryRecord = async (data: any) => {
+	const queryRecord = async (data: ICallRecord) => {
 		await mutateAsync(data)
 	}
 

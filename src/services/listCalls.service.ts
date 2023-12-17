@@ -9,9 +9,9 @@ class ListCallsService {
 		return await $axios.post<IListCallsResponse>(`${this.URL_GET_CALLS}`, {})
 	}
 
-	async getRecord(record: string, partnership_id: string | number) {
+	async getRecord(recordId: string | number, partnershipId: string | number) {
 		return await $axios.post<any>(
-			`${this.URL_GET_RECORD}?record=${record}&partnership_id=${partnership_id}`,
+			`${this.URL_GET_RECORD}?record=${recordId}&partnership_id=${partnershipId}`,
 			{}
 		)
 	}
