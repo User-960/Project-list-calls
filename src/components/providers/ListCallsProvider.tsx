@@ -98,14 +98,14 @@ const ListCallsProvider: FC<PropsWithChildren> = ({ children }) => {
 	useEffect(() => {
 		if (sortDurationUpDown === 'down' && isSortDuration) {
 			filteredListCalls.sort((call1, call2) =>
-				call1.time > call2.time ? 1 : -1
+				call1.time < call2.time ? 1 : -1
 			)
 			setIsSortDuration(false)
 		}
 
 		if (sortDurationUpDown === 'up' && isSortDuration) {
 			filteredListCalls.sort((call1, call2) =>
-				call1.time < call2.time ? 1 : -1
+				call1.time > call2.time ? 1 : -1
 			)
 			setIsSortDuration(false)
 		}
@@ -114,14 +114,14 @@ const ListCallsProvider: FC<PropsWithChildren> = ({ children }) => {
 	useEffect(() => {
 		if (sortDateUpDown === 'down' && isSortDate) {
 			filteredListCalls.sort((call1, call2) =>
-				call1.date > call2.date ? 1 : -1
+				call1.date < call2.date ? 1 : -1
 			)
 			setIsSortDate(false)
 		}
 
 		if (sortDateUpDown === 'up' && isSortDate) {
 			filteredListCalls.sort((call1, call2) =>
-				call1.date < call2.date ? 1 : -1
+				call1.date > call2.date ? 1 : -1
 			)
 			setIsSortDate(false)
 		}
