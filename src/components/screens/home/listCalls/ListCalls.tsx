@@ -15,6 +15,7 @@ import noAnswerCall from '../../../../../public/images/noAnswerCall.svg'
 import outgoingCall from '../../../../../public/images/outgoingCall.svg'
 
 import styles from './ListCalls.module.scss'
+import NavList from './navList/navList'
 import { formatDate } from '@/helpers/formatDate'
 import { formatDuration } from '@/helpers/formatDuration'
 import { formatPhone } from '@/helpers/formatPhone'
@@ -54,29 +55,7 @@ const ListCalls = () => {
 	return (
 		<>
 			<div className={styles.listCallsWrapper}>
-				<div className={styles.navList}>
-					<div className={cn(styles.navListColumn, styles.navListType)}>
-						Тип
-					</div>
-					<div className={cn(styles.navListColumn, styles.navListTime)}>
-						Время
-					</div>
-					<div className={cn(styles.navListColumn, styles.navListEmployee)}>
-						Сотрудник
-					</div>
-					<div className={cn(styles.navListColumn, styles.navListCall)}>
-						Звонок
-					</div>
-					<div className={cn(styles.navListColumn, styles.navListSource)}>
-						Источник
-					</div>
-					<div className={cn(styles.navListColumn, styles.navListEstimation)}>
-						Оценка
-					</div>
-					<div className={cn(styles.navListColumn, styles.navListDuration)}>
-						Длительность
-					</div>
-				</div>
+				<NavList />
 
 				{isLoading ? (
 					<div className={styles.loaderWrapper}>

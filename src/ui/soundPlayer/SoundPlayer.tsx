@@ -65,6 +65,13 @@ const SoundPlayer: FC<ISoundPlayerProps> = ({
 		}
 	}
 
+	const stopPlayingButton = () => {
+		if (isPlaying && downloadRecord) {
+			pause()
+			setIsPlaying(false)
+		}
+	}
+
 	return (
 		<div className={styles.soundPlayer}>
 			{/* <audio id='audio' controls>
@@ -73,7 +80,8 @@ const SoundPlayer: FC<ISoundPlayerProps> = ({
 
 			<div className={styles.time}>
 				<p>
-					{currTime.min}:{currTime.sec}
+					{Number(currTime.min) === 0 ? '00' : currTime.min}:
+					{Number(currTime.sec) < 10 ? `0${currTime.sec}` : currTime.sec}
 				</p>
 				{/* <p>
 						{time.min}:{time.sec}
@@ -109,7 +117,13 @@ const SoundPlayer: FC<ISoundPlayerProps> = ({
 
 			<div className={styles.btnWrapper}>
 				<button className={styles.downloadBtn}></button>
-				<button className={styles.closeBtn} onClick={closeSoundPlayer}></button>
+				<button
+					className={styles.closeBtn}
+					onClick={() => {
+						stopPlayingButton()
+						closeSoundPlayer()
+					}}
+				></button>
 			</div>
 		</div>
 	)
