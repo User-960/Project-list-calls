@@ -38,6 +38,11 @@
 	width: 100%;
 }
 
+.navListTime {
+	display: flex;
+	align-items: center;
+}
+
 .navListEmployee,
 .itemEmployee {
 	max-width: 129px;
@@ -69,6 +74,11 @@
 
 	display: flex;
 	justify-content: flex-end;
+}
+
+.navListDuration {
+	display: flex;
+	align-items: center;
 }
 
 .listCalls {

@@ -24,9 +24,17 @@ const cn = require('clsx')
 
 const ListCalls = () => {
 	const { isLoading, queryListCalls } = useGetCalls()
-	const { listCalls, downloadRecord, filteredListCalls } = useListCalls()
+	const {
+		listCalls,
+		downloadRecord,
+		filteredListCalls,
+		openSound,
+		setOpenSound,
+		setSortDurationUpDown
+	} = useListCalls()
 	const { queryRecord } = useGetRecord()
-	const [openSoundPlayer, setOpenSoundPlayer] = useState<boolean>(false)
+	// const [openSoundPlayer, setOpenSoundPlayer] = useState<boolean>(false)
+	// const [openSound, setOpenSound] = useState<number>(0)
 
 	useEffect(() => {
 		queryListCalls()
@@ -39,7 +47,6 @@ const ListCalls = () => {
 		const partnershipId = currentCall[0].partnership_id
 
 		queryRecord({ recordId, partnershipId })
-		setOpenSoundPlayer(true)
 	}
 
 	// useEffect(() => {
@@ -149,13 +156,16 @@ const ListCalls = () => {
 								<div className={styles.itemDuration}>
 									{call.record && call.partnership_id ? (
 										<>
-											{!openSoundPlayer && (
+											{!openSound && (
 												<button
 													className={styles.playButton}
-													onClick={() => downloadRecordServer(call.id)}
+													onClick={() => {
+														downloadRecordServer(call.id)
+														setOpenSound(call.id)
+													}}
 												></button>
 											)}
-											{!openSoundPlayer && <p>{formatDuration(call.time)}</p>}
+											{!openSound && <p>{formatDuration(call.time)}</p>}
 										</>
 									) : (
 										<p>{formatDuration(call.time)}</p>
@@ -163,10 +173,10 @@ const ListCalls = () => {
 
 									{call.record &&
 										call.partnership_id &&
-										openSoundPlayer &&
+										openSound === call.id &&
 										downloadRecord !== '' && (
 											<SoundPlayer
-												closeSoundPlayer={() => setOpenSoundPlayer(false)}
+												closeSoundPlayer={() => setOpenSound(0)}
 												downloadRecord={downloadRecord}
 											/>
 										)}
