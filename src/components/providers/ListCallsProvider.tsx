@@ -14,22 +14,35 @@ type TypeContext = {
 	setListCalls: Dispatch<SetStateAction<ICall[]>>
 	downloadRecord: string
 	setDownloadRecord: Dispatch<SetStateAction<string>>
+	currentTypeCallFilter: string
+	setCurrentTypeCallFilter: Dispatch<SetStateAction<string>>
 }
 
 export const ListCallsContext = createContext<TypeContext>({
 	listCalls: [],
 	setListCalls: () => {},
 	downloadRecord: '',
-	setDownloadRecord: () => {}
+	setDownloadRecord: () => {},
+	currentTypeCallFilter: '',
+	setCurrentTypeCallFilter: () => {}
 })
 
 const ListCallsProvider: FC<PropsWithChildren> = ({ children }) => {
 	const [listCalls, setListCalls] = useState<ICall[]>([])
 	const [downloadRecord, setDownloadRecord] = useState<string>('')
+	const [currentTypeCallFilter, setCurrentTypeCallFilter] =
+		useState<string>('allCalls')
 
 	return (
 		<ListCallsContext.Provider
-			value={{ listCalls, setListCalls, downloadRecord, setDownloadRecord }}
+			value={{
+				listCalls,
+				setListCalls,
+				downloadRecord,
+				setDownloadRecord,
+				currentTypeCallFilter,
+				setCurrentTypeCallFilter
+			}}
 		>
 			{children}
 		</ListCallsContext.Provider>
