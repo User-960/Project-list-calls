@@ -23,7 +23,7 @@ const cn = require('clsx')
 
 const ListCalls = () => {
 	const { isLoading, queryListCalls } = useGetCalls()
-	const { listCalls, downloadRecord } = useListCalls()
+	const { listCalls, downloadRecord, filteredListCalls } = useListCalls()
 	const { queryRecord } = useGetRecord()
 	const [openSoundPlayer, setOpenSoundPlayer] = useState<boolean>(false)
 
@@ -84,7 +84,7 @@ const ListCalls = () => {
 					</div>
 				) : (
 					<ul className={styles.listCalls}>
-						{listCalls.map(call => (
+						{filteredListCalls.map(call => (
 							<li key={call.id} className={styles.listCallsItem}>
 								{call.in_out === 1 ? (
 									<div className={styles.itemType}>

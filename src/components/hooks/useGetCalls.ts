@@ -5,13 +5,16 @@ import { useListCalls } from './useListCalls'
 import ListCallsService from '@/services/listCalls.service'
 
 export const useGetCalls = () => {
-	const { listCalls, setListCalls } = useListCalls()
+	const { listCalls, setListCalls, setFilteredListCalls } = useListCalls()
 
 	const { isLoading, error, mutateAsync } = useMutation(
 		['getListCalls'],
 		() => ListCallsService.getListCalls(),
 		{
-			onSuccess: ({ data }) => setListCalls(data.results),
+			onSuccess: ({ data }) => {
+				setListCalls(data.results)
+				setFilteredListCalls(data.results)
+			},
 			onError: () => console.log('Error in database')
 		}
 	)

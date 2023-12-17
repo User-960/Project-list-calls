@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useId } from 'react'
 import Select from 'react-select'
 
 import { useListCalls } from '@/components/hooks/useListCalls'
@@ -33,6 +33,7 @@ const Filter = () => {
 					defaultValue={options[0]}
 					value={getValue()}
 					onChange={onChange}
+					instanceId={useId()}
 				/>
 
 				<div className={styles.filterDays}>3 дня</div>
