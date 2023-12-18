@@ -15,6 +15,13 @@ class ListCallsService {
 			{}
 		)
 	}
+
+	async getListCallsDate(date_start: string, date_end: string) {
+		return await $axios.post<IListCallsResponse>(
+			`${this.URL_GET_CALLS}?date_start=${date_start}&date_end=${date_end}`,
+			{}
+		)
+	}
 }
 
 export default new ListCallsService()

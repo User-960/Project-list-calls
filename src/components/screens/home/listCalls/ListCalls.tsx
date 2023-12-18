@@ -5,6 +5,7 @@ import Loader from '@/ui/loader/Loader'
 import SoundPlayer from '@/ui/soundPlayer/SoundPlayer'
 
 import { useGetCalls } from '@/components/hooks/useGetCalls'
+import { useGetCallsDate } from '@/components/hooks/useGetCallsDate'
 import { useGetRecord } from '@/components/hooks/useGetRecord'
 import { useListCalls } from '@/components/hooks/useListCalls'
 
@@ -24,6 +25,7 @@ const cn = require('clsx')
 
 const ListCalls = () => {
 	const { isLoading, queryListCalls } = useGetCalls()
+	const { queryListCallsDate } = useGetCallsDate()
 	const {
 		listCalls,
 		downloadRecord,
@@ -38,6 +40,7 @@ const ListCalls = () => {
 
 	useEffect(() => {
 		queryListCalls()
+		queryListCallsDate({ data_start: '2023-04-19', data_end: '2023-12-19' })
 	}, [])
 
 	const downloadRecordServer = (call_id: string | number): any => {
