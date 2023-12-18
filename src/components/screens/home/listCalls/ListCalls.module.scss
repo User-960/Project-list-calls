@@ -184,6 +184,17 @@
 	background-image: url('../../../../../public/images/upArrow.svg');
 }
 
+.warning {
+	font-size: 16px;
+	line-height: 21px;
+	color: $blue-medium;
+	opacity: 87%;
+	text-align: center;
+	text-decoration: underline;
+
+	padding: 8px;
+}
+
 @media (max-width: 1200px) {
 	.navListCall,
 	.itemCall {

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import Loader from '@/ui/loader/Loader'
 import SoundPlayer from '@/ui/soundPlayer/SoundPlayer'
@@ -70,121 +70,125 @@ const ListCalls = () => {
 					</div>
 				) : (
 					<ul className={styles.listCalls}>
-						{filteredListCalls.map(call => (
-							<li key={call.id} className={styles.listCallsItem}>
-								{call.in_out === 1 ? (
-									<div className={styles.itemType}>
-										{call.status === `Не дозвонился` ? (
-											<Image
-												className={styles.itemTypeCallIcon}
-												src={noAnswerCall}
-												alt='type of call'
-												draggable={false}
-											/>
-										) : (
-											<Image
-												className={styles.itemTypeCallIcon}
-												src={outgoingCall}
-												alt='type of call'
-												draggable={false}
-											/>
-										)}
-									</div>
-								) : (
-									<div className={styles.itemType}>
-										{call.status === `Не дозвонился` ? (
-											<Image
-												className={styles.itemTypeCallIcon}
-												src={missedCall}
-												alt='type of call'
-												draggable={false}
-											/>
-										) : (
-											<Image
-												className={styles.itemTypeCallIcon}
-												src={incomingCall}
-												alt='type of call'
-												draggable={false}
-											/>
-										)}
-									</div>
-								)}
-
-								<div className={styles.itemTime}>{formatDate(call.date)}</div>
-
-								<div className={styles.itemEmployee}>
-									<Image
-										className={styles.itemAvatar}
-										src={call.person_avatar || avatarOne}
-										alt='avatar of employee'
-										width={32}
-										height={32}
-										draggable={false}
-									/>
-								</div>
-
-								<div className={styles.itemCall}>
-									{formatPhone(call.from_number)}
-								</div>
-
-								<div className={styles.itemSource}>
-									{call.source ? call.source : ''}
-								</div>
-
-								<div className={styles.itemEstimation}>
-									{!call.results?.length ? (
-										<div
-											className={cn(
-												styles.itemEstimationBlock,
-												styles.itemEstimationSuccess
+						{filteredListCalls.length ? (
+							filteredListCalls.map(call => (
+								<li key={call.id} className={styles.listCallsItem}>
+									{call.in_out === 1 ? (
+										<div className={styles.itemType}>
+											{call.status === `Не дозвонился` ? (
+												<Image
+													className={styles.itemTypeCallIcon}
+													src={noAnswerCall}
+													alt='type of call'
+													draggable={false}
+												/>
+											) : (
+												<Image
+													className={styles.itemTypeCallIcon}
+													src={outgoingCall}
+													alt='type of call'
+													draggable={false}
+												/>
 											)}
-										>
-											Отлично
 										</div>
 									) : (
-										<div
-											className={cn(
-												styles.itemEstimationBlock,
-												styles.itemEstimationFailure
+										<div className={styles.itemType}>
+											{call.status === `Не дозвонился` ? (
+												<Image
+													className={styles.itemTypeCallIcon}
+													src={missedCall}
+													alt='type of call'
+													draggable={false}
+												/>
+											) : (
+												<Image
+													className={styles.itemTypeCallIcon}
+													src={incomingCall}
+													alt='type of call'
+													draggable={false}
+												/>
 											)}
-										>
-											Плохо
 										</div>
 									)}
-								</div>
 
-								<div className={styles.itemDuration}>
-									{call.record && call.partnership_id ? (
-										<>
-											{!openSound && (
-												<button
-													className={styles.playButton}
-													onClick={() => {
-														downloadRecordServer(call.id)
-														setOpenSound(call.id)
-													}}
-												></button>
-											)}
-											{openSound !== call.id && (
-												<p>{formatDuration(call.time)}</p>
-											)}
-										</>
-									) : (
-										<p>{formatDuration(call.time)}</p>
-									)}
+									<div className={styles.itemTime}>{formatDate(call.date)}</div>
 
-									{call.record &&
-										call.partnership_id &&
-										openSound === call.id &&
-										downloadRecord !== '' && (
-											<SoundPlayer
-												closeSoundPlayer={() => setOpenSound(0)}
-												downloadRecord={downloadRecord}
-											/>
+									<div className={styles.itemEmployee}>
+										<Image
+											className={styles.itemAvatar}
+											src={call.person_avatar || avatarOne}
+											alt='avatar of employee'
+											width={32}
+											height={32}
+											draggable={false}
+										/>
+									</div>
+
+									<div className={styles.itemCall}>
+										{formatPhone(call.from_number)}
+									</div>
+
+									<div className={styles.itemSource}>
+										{call.source ? call.source : ''}
+									</div>
+
+									<div className={styles.itemEstimation}>
+										{!call.results?.length ? (
+											<div
+												className={cn(
+													styles.itemEstimationBlock,
+													styles.itemEstimationSuccess
+												)}
+											>
+												Отлично
+											</div>
+										) : (
+											<div
+												className={cn(
+													styles.itemEstimationBlock,
+													styles.itemEstimationFailure
+												)}
+											>
+												Плохо
+											</div>
 										)}
-								</div>
-							</li>
-						))}
+									</div>
+
+									<div className={styles.itemDuration}>
+										{call.record && call.partnership_id ? (
+											<>
+												{!openSound && (
+													<button
+														className={styles.playButton}
+														onClick={() => {
+															downloadRecordServer(call.id)
+															setOpenSound(call.id)
+														}}
+													></button>
+												)}
+												{openSound !== call.id && (
+													<p>{formatDuration(call.time)}</p>
+												)}
+											</>
+										) : (
+											<p>{formatDuration(call.time)}</p>
+										)}
+
+										{call.record &&
+											call.partnership_id &&
+											openSound === call.id &&
+											downloadRecord !== '' && (
+												<SoundPlayer
+													closeSoundPlayer={() => setOpenSound(0)}
+													downloadRecord={downloadRecord}
+												/>
+											)}
+									</div>
+								</li>
+							))
+						) : (
+							<li className={styles.warning}>Звонки отсутствуют.</li>
+						)}
 					</ul>
 				)}
 			</div>

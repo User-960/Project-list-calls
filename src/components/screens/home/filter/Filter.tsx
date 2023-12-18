@@ -4,6 +4,7 @@ import Select from 'react-select'
 import { useListCalls } from '@/components/hooks/useListCalls'
 
 import styles from './Filter.module.scss'
+import FilterDate from './filterDate/filterDate'
 
 const Filter = () => {
 	const { currentTypeCallFilter, setCurrentTypeCallFilter } = useListCalls()
@@ -36,7 +37,7 @@ const Filter = () => {
 					instanceId={useId()}
 				/>
 
-				<div className={styles.filterDays}>3 дня</div>
+				<FilterDate />
 			</div>
 		</>
 	)

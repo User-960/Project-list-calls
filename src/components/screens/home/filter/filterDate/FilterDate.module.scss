@@ -1,0 +1,39 @@
+@import 'src/assets/styles/variables';
+
+.filterDays {
+	display: flex;
+	align-items: center;
+}
+
+.daysBtn {
+	font-size: 14px;
+	line-height: 16px;
+	color: #005ff8;
+	opacity: 87%;
+	margin: 0px 10px;
+
+	display: flex;
+	align-items: center;
+}
+
+.daysMount {
+	margin-left: 8px;
+}
+
+.filterBtn {
+	width: 24px;
+	height: 24px;
+
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.filterLeftBtn {
+	transform: rotate(90deg);
+	background-image: url('../../../../../../public/images/downArrow.svg');
+}
+
+.filterRightBtn {
+	transform: rotate(90deg);
+	background-image: url('../../../../../../public/images/upArrow.svg');
+}
