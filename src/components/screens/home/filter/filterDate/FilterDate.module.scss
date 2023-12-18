@@ -3,6 +3,8 @@
 .filterDays {
 	display: flex;
 	align-items: center;
+
+	position: relative;
 }
 
 .daysBtn {
@@ -31,9 +33,19 @@
 .filterLeftBtn {
 	transform: rotate(90deg);
 	background-image: url('../../../../../../public/images/downArrow.svg');
+	transition: background-image 0.2s ease-in-out;
+}
+
+.filterLeftBtn:hover {
+	background-image: url('../../../../../../public/images/downArrowBlue.svg');
 }
 
 .filterRightBtn {
 	transform: rotate(90deg);
 	background-image: url('../../../../../../public/images/upArrow.svg');
+	transition: background-image 0.2s ease-in-out;
+}
+
+.filterRightBtn:hover {
+	background-image: url('../../../../../../public/images/upArrowBlue.svg');
 }
