@@ -1,9 +1,10 @@
 import { FC, useEffect, useState } from 'react'
 import useSound from 'use-sound'
 
-import audioMock from '../../assets/audio/audioMock.mp3'
-
 import styles from './SoundPlayer.module.scss'
+
+// import audioMock from '../../assets/audio/audioMock.mp3'
+const audioMock = require('../../assets/audio/audioMock.mp3')
 
 interface ISoundPlayerProps {
 	closeSoundPlayer: () => void
