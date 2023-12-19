@@ -30,19 +30,7 @@ const SoundPlayer: FC<ISoundPlayerProps> = ({
 	// 	!downloadRecord ? downloadRecord : audioMock
 	// )
 
-	// useEffect(() => {
-	// 	urlAudio = URL.createObjectURL(
-	// 		new Blob([downloadRecord], { type: 'audio/mp3' })
-	// 	)
-	// }, [downloadRecord])
-
-	// useEffect(() => {
-	// 	urlAudio = new FileReader().readAsDataURL(downloadRecord)
-	// }, [downloadRecord])
-
-	const [play, { pause, duration, sound }] = useSound(
-		!downloadRecord ? downloadRecord : audioMock
-	)
+	const [play, { pause, duration, sound }] = useSound(audioMock)
 
 	useEffect(() => {
 		if (duration) {
