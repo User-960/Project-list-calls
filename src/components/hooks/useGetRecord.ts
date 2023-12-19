@@ -6,7 +6,7 @@ import { ICallRecord } from '@/interfaces/calls'
 import ListCallsService from '@/services/listCalls.service'
 
 export const useGetRecord = () => {
-	const { listCalls, setListCalls, setDownloadRecord } = useListCalls()
+	const { setDownloadRecord } = useListCalls()
 
 	const { isLoading, error, mutateAsync } = useMutation(
 		['getRecord'],

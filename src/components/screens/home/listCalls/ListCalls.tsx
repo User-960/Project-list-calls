@@ -45,7 +45,6 @@ const ListCalls = () => {
 
 	useEffect(() => {
 		if (startEndDateFilter !== null) {
-			// console.log(startEndDateFilter)
 			queryListCallsDate(startEndDateFilter)
 			setStartEndDateFilter(null)
 		}
@@ -60,9 +59,9 @@ const ListCalls = () => {
 		queryRecord({ recordId, partnershipId })
 	}
 
-	useEffect(() => {
-		console.log(filteredListCalls.map(call => console.log(call)))
-	}, [filteredListCalls])
+	// useEffect(() => {
+	// 	console.log(filteredListCalls.map(call => console.log(call)))
+	// }, [filteredListCalls])
 
 	// useEffect(() => {
 	// 	console.log(downloadRecord)

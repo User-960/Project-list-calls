@@ -13,7 +13,7 @@ const FilterDate = () => {
 
 	return (
 		<>
-			<div className={styles.filterDays} ref={ref}>
+			<div className={styles.filterDays}>
 				{isShow && (
 					<FilterOptions
 						closeFilterOptions={() => setIsShow(false)}

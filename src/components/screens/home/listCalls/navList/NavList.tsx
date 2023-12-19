@@ -4,16 +4,10 @@ import { useListCalls } from '@/components/hooks/useListCalls'
 
 import styles from '../ListCalls.module.scss'
 
-import { ICall } from '@/interfaces/calls'
-
 const cn = require('clsx')
 
 const NavList = () => {
 	const {
-		listCalls,
-		downloadRecord,
-		filteredListCalls,
-		setFilteredListCalls,
 		sortDurationUpDown,
 		setSortDurationUpDown,
 		sortDateUpDown,

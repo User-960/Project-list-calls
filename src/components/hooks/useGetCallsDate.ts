@@ -6,7 +6,7 @@ import { IStartEndDateFilter } from '@/interfaces/calls'
 import ListCallsService from '@/services/listCalls.service'
 
 export const useGetCallsDate = () => {
-	const { listCalls, setListCalls, setFilteredListCalls } = useListCalls()
+	const { setListCalls, setFilteredListCalls } = useListCalls()
 
 	const { isLoading, error, mutateAsync } = useMutation(
 		['getListCallsDate'],
@@ -14,7 +14,6 @@ export const useGetCallsDate = () => {
 			ListCallsService.getListCallsDate(date_start, date_end),
 		{
 			onSuccess: ({ data }) => {
-				console.log(data)
 				setListCalls(data.results)
 				setFilteredListCalls(data.results)
 			},
