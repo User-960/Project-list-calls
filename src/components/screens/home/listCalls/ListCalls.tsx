@@ -60,11 +60,9 @@ const ListCalls = () => {
 		queryRecord({ recordId, partnershipId })
 	}
 
-	// useEffect(() => {
-	// 	console.log(
-	// 		listCalls.map(call => console.log(call.record, call.partnership_id))
-	// 	)
-	// }, [listCalls])
+	useEffect(() => {
+		console.log(filteredListCalls.map(call => console.log(call)))
+	}, [filteredListCalls])
 
 	// useEffect(() => {
 	// 	console.log(downloadRecord)
@@ -136,7 +134,16 @@ const ListCalls = () => {
 									</div>
 
 									<div className={styles.itemCall}>
-										{formatPhone(call.from_number)}
+										{call.in_out === 0 ? (
+											<>
+												<p>{call.person_name}</p>
+												<p className={styles.partnerName}>
+													{call.partner_data.name}
+												</p>
+											</>
+										) : (
+											formatPhone(call.from_number)
+										)}
 									</div>
 
 									<div className={styles.itemSource}>

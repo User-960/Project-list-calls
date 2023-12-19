@@ -255,11 +255,19 @@
 	}
 }
 
+.partnerName {
+	color: $marine;
+	weight: 400;
+	font-size: 15px;
+	line-height: 21px;
+}
+
 @media (max-width: 880px) {
 	.itemTime,
 	.itemCall,
 	.itemDuration,
-	.itemSource {
+	.itemSource,
+	.partnerName {
 		font-size: 13px;
 		line-height: 21px;
 	}
