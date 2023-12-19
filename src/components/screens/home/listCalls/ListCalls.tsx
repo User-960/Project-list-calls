@@ -46,15 +46,6 @@ const ListCalls = () => {
 			console.log(startEndDateFilter)
 			queryListCallsDate(startEndDateFilter)
 		}
-
-		// let day_1 = new Date(2023, 12, 19),
-		// 	day_2 = new Date(2023, 12, 16)
-
-		// function diffDates(day_one: any, day_two: any) {
-		// 	return (day_one - day_two) / (60 * 60 * 24 * 1000)
-		// }
-
-		// console.log(diffDates(day_2, day_1))
 	}, [startEndDateFilter])
 
 	const downloadRecordServer = (call_id: string | number): any => {
