@@ -5,6 +5,8 @@ const nextConfig = {
 	},
 	reactStrictMode: true,
 
+	transpilePackages: ['dayjs'],
+
 	webpack(config, options) {
 		config.module.rules.push({
 			test: /\.(mp3)$/,
@@ -19,3 +21,4 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
+// export default nextConfig
