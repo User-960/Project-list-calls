@@ -3,7 +3,6 @@ import useSound from 'use-sound'
 
 import styles from './SoundPlayer.module.scss'
 
-// import audioMock from '../../assets/audio/audioMock.mp3'
 const audioMock = require('../../assets/audio/audioMock.mp3')
 
 interface ISoundPlayerProps {

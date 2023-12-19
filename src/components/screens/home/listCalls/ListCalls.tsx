@@ -45,7 +45,7 @@ const ListCalls = () => {
 
 	useEffect(() => {
 		if (startEndDateFilter !== null) {
-			console.log(startEndDateFilter)
+			// console.log(startEndDateFilter)
 			queryListCallsDate(startEndDateFilter)
 			setStartEndDateFilter(null)
 		}

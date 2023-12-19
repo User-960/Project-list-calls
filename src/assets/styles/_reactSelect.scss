@@ -56,14 +56,10 @@
 		line-height: 18px !important;
 
 		cursor: pointer !important;
-		transition: background-color 0.15s ease-in-out !important;
-
-		/* &--is-focused {
-			background-color: #dee4ff !important;
-		} */
+		transition: all 0.1s ease-in-out !important;
 	}
 
-	/* &__option:hover {
+	&__option:hover {
 		background-color: #dee4ff !important;
-	} */
+	}
 }

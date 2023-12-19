@@ -25,6 +25,14 @@ const Filter = () => {
 		setCurrentTypeCallFilter(newValue.value)
 	}
 
+	const customStyles = {
+		option: (provided: any, state: any) => ({
+			...provided,
+			color: state.isSelected ? '#015EF5' : '#2B2D33',
+			backgroundColor: state.isSelected ? 'transparent' : '#FFFFFF'
+		})
+	}
+
 	return (
 		<>
 			<div className={styles.filterWrapper}>
@@ -35,6 +43,7 @@ const Filter = () => {
 					value={getValue()}
 					onChange={onChange}
 					instanceId={useId()}
+					styles={customStyles}
 				/>
 
 				<FilterDate />
