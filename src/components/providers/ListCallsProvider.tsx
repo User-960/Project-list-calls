@@ -37,6 +37,12 @@ type TypeContext = {
 
 	startEndDateFilter: null | IStartEndDateFilter
 	setStartEndDateFilter: Dispatch<SetStateAction<null | IStartEndDateFilter>>
+
+	isShowAlert: boolean
+	setIsShowAlert: Dispatch<SetStateAction<boolean>>
+
+	searchedCalls: string
+	setSearchedCalls: Dispatch<SetStateAction<string>>
 }
 
 export const ListCallsContext = createContext<TypeContext>({
@@ -65,11 +71,19 @@ export const ListCallsContext = createContext<TypeContext>({
 	setOpenSound: () => {},
 
 	startEndDateFilter: null,
-	setStartEndDateFilter: () => {}
+	setStartEndDateFilter: () => {},
+
+	isShowAlert: false,
+	setIsShowAlert: () => {},
+
+	searchedCalls: '',
+	setSearchedCalls: () => {}
 })
 
 const ListCallsProvider: FC<PropsWithChildren> = ({ children }) => {
 	const [listCalls, setListCalls] = useState<ICall[]>([])
+	const [isShowAlert, setIsShowAlert] = useState<boolean>(false)
+	const [searchedCalls, setSearchedCalls] = useState<string>('')
 	const [filteredListCalls, setFilteredListCalls] = useState<ICall[]>([])
 	const [downloadRecord, setDownloadRecord] = useState<string>('')
 	const [currentTypeCallFilter, setCurrentTypeCallFilter] =
@@ -166,7 +180,13 @@ const ListCallsProvider: FC<PropsWithChildren> = ({ children }) => {
 				setOpenSound,
 
 				startEndDateFilter,
-				setStartEndDateFilter
+				setStartEndDateFilter,
+
+				isShowAlert,
+				setIsShowAlert,
+
+				searchedCalls,
+				setSearchedCalls
 			}}
 		>
 			{children}

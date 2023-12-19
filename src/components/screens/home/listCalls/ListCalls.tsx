@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React, { useEffect } from 'react'
 
+import Alert from '@/ui/alert/Alert'
 import Loader from '@/ui/loader/Loader'
 import SoundPlayer from '@/ui/soundPlayer/SoundPlayer'
 
@@ -33,7 +34,9 @@ const ListCalls = () => {
 		openSound,
 		setOpenSound,
 		startEndDateFilter,
-		setStartEndDateFilter
+		setStartEndDateFilter,
+		isShowAlert,
+		searchedCalls
 	} = useListCalls()
 	const { queryRecord } = useGetRecord()
 
@@ -61,6 +64,10 @@ const ListCalls = () => {
 
 	return (
 		<>
+			{isShowAlert && (
+				<Alert type={'error'} text={'Ошибка сервера'} status={'checked'} />
+			)}
+
 			<div className={styles.listCallsWrapper}>
 				<NavList />
 
@@ -200,6 +207,7 @@ const ListCalls = () => {
 						)}
 					</ul>
 				)}
+				<div className={styles.searchedCalls}>Найдено: {searchedCalls}</div>
 			</div>
 		</>
 	)

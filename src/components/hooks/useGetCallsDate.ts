@@ -6,7 +6,12 @@ import { IStartEndDateFilter } from '@/interfaces/calls'
 import ListCallsService from '@/services/listCalls.service'
 
 export const useGetCallsDate = () => {
-	const { setListCalls, setFilteredListCalls } = useListCalls()
+	const {
+		setListCalls,
+		setFilteredListCalls,
+		setIsShowAlert,
+		setSearchedCalls
+	} = useListCalls()
 
 	const { isLoading, error, mutateAsync } = useMutation(
 		['getListCallsDate'],
@@ -16,8 +21,9 @@ export const useGetCallsDate = () => {
 			onSuccess: ({ data }) => {
 				setListCalls(data.results)
 				setFilteredListCalls(data.results)
+				setSearchedCalls(data.total_rows)
 			},
-			onError: () => console.log('Error in database')
+			onError: () => setIsShowAlert(true)
 		}
 	)
 

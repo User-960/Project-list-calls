@@ -6,7 +6,7 @@ import { ICallRecord } from '@/interfaces/calls'
 import ListCallsService from '@/services/listCalls.service'
 
 export const useGetRecord = () => {
-	const { downloadRecord, setDownloadRecord } = useListCalls()
+	const { setDownloadRecord, setIsShowAlert } = useListCalls()
 
 	const { isLoading, error, mutateAsync } = useMutation(
 		['getRecord'],
@@ -22,7 +22,7 @@ export const useGetRecord = () => {
 					URL.createObjectURL(new Blob([data], { type: 'audio/mp3' }))
 				)
 			},
-			onError: () => console.log('Error in database')
+			onError: () => setIsShowAlert(true)
 		}
 	)
 

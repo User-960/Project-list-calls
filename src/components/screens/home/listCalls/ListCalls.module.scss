@@ -262,6 +262,17 @@
 	line-height: 21px;
 }
 
+.searchedCalls {
+	text-align: end;
+	color: $marine;
+	weight: 400;
+	font-size: 13px;
+	line-height: 21px;
+	margin-top: 10px;
+	padding: 5px 30px;
+	transform: skewX(-10deg);
+}
+
 @media (max-width: 880px) {
 	.itemTime,
 	.itemCall,
