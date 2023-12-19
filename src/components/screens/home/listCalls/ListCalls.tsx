@@ -59,14 +59,6 @@ const ListCalls = () => {
 		queryRecord({ recordId, partnershipId })
 	}
 
-	// useEffect(() => {
-	// 	console.log(filteredListCalls.map(call => console.log(call)))
-	// }, [filteredListCalls])
-
-	// useEffect(() => {
-	// 	console.log(downloadRecord)
-	// }, [downloadRecord])
-
 	return (
 		<>
 			<div className={styles.listCallsWrapper}>

@@ -122,6 +122,10 @@ input[type='range'].timeline::-moz-range-track {
 		position: fixed;
 		top: 20px;
 		right: 0px;
+
+		top: 4%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 	}
 }
 
@@ -129,13 +133,19 @@ input[type='range'].timeline::-moz-range-track {
 	.soundPlayer {
 		position: static;
 		margin-left: 0px;
+
+		top: 0px;
+		left: 0px;
+		transform: none;
 	}
 }
 
 @media (max-width: 564px) {
 	.soundPlayer {
 		position: fixed;
-		top: 20px;
-		right: 0px;
+		top: 92%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 90%;
 	}
 }

@@ -6,14 +6,22 @@ import { ICallRecord } from '@/interfaces/calls'
 import ListCallsService from '@/services/listCalls.service'
 
 export const useGetRecord = () => {
-	const { setDownloadRecord } = useListCalls()
+	const { downloadRecord, setDownloadRecord } = useListCalls()
 
 	const { isLoading, error, mutateAsync } = useMutation(
 		['getRecord'],
 		({ recordId, partnershipId }: ICallRecord) =>
 			ListCallsService.getRecord(recordId, partnershipId),
 		{
-			onSuccess: ({ data }) => setDownloadRecord(data),
+			// onSuccess: ({ data }) =>
+			// 	setDownloadRecord(
+			// 		URL.createObjectURL(new Blob([data], { type: 'audio/mpeg' }))
+			// 	),
+			onSuccess: ({ data }) => {
+				setDownloadRecord(
+					URL.createObjectURL(new Blob([data], { type: 'audio/mp3' }))
+				)
+			},
 			onError: () => console.log('Error in database')
 		}
 	)

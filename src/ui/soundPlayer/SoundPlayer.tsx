@@ -16,17 +16,33 @@ const SoundPlayer: FC<ISoundPlayerProps> = ({
 }) => {
 	const [isPlaying, setIsPlaying] = useState(false)
 	const [time, setTime] = useState({
-		min: '',
-		sec: ''
+		min: '0',
+		sec: '0'
 	})
 	const [currTime, setCurrTime] = useState({
-		min: '',
-		sec: ''
+		min: '0',
+		sec: '0'
 	})
 
 	const [seconds, setSeconds] = useState()
 
-	const [play, { pause, duration, sound }] = useSound(audioMock)
+	// const [play, { pause, duration, sound }] = useSound(
+	// 	!downloadRecord ? downloadRecord : audioMock
+	// )
+
+	// useEffect(() => {
+	// 	urlAudio = URL.createObjectURL(
+	// 		new Blob([downloadRecord], { type: 'audio/mp3' })
+	// 	)
+	// }, [downloadRecord])
+
+	// useEffect(() => {
+	// 	urlAudio = new FileReader().readAsDataURL(downloadRecord)
+	// }, [downloadRecord])
+
+	const [play, { pause, duration, sound }] = useSound(
+		!downloadRecord ? downloadRecord : audioMock
+	)
 
 	useEffect(() => {
 		if (duration) {
@@ -72,11 +88,19 @@ const SoundPlayer: FC<ISoundPlayerProps> = ({
 		}
 	}
 
+	// const createMarkup = () => {
+	// 	return { __html: downloadRecord }
+	// }
+
 	return (
 		<div className={styles.soundPlayer}>
 			{/* <audio id='audio' controls>
-				<source src={audioMock} type='audio/ogg; codecs=vorbis' />
+				<source src={downloadRecord} type='audio/mpeg; codecs=vorbis' />
+				<source src={downloadRecord} type='audio/mpeg' />
+				<source src={downloadRecord} type='audio/ogg'></source>
 			</audio> */}
+
+			{/* {downloadRecord && <div dangerouslySetInnerHTML={createMarkup()}></div>} */}
 
 			<div className={styles.time}>
 				<p>

@@ -15,8 +15,10 @@ type TypeContext = {
 	setListCalls: Dispatch<SetStateAction<ICall[]>>
 	filteredListCalls: ICall[]
 	setFilteredListCalls: Dispatch<SetStateAction<ICall[]>>
+
 	downloadRecord: string
 	setDownloadRecord: Dispatch<SetStateAction<string>>
+
 	currentTypeCallFilter: string
 	setCurrentTypeCallFilter: Dispatch<SetStateAction<string>>
 
@@ -42,8 +44,10 @@ export const ListCallsContext = createContext<TypeContext>({
 	setListCalls: () => {},
 	filteredListCalls: [],
 	setFilteredListCalls: () => {},
+
 	downloadRecord: '',
 	setDownloadRecord: () => {},
+
 	currentTypeCallFilter: '',
 	setCurrentTypeCallFilter: () => {},
 
