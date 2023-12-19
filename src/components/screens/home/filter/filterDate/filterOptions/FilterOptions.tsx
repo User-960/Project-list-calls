@@ -1,13 +1,27 @@
 import { DatePicker } from 'antd'
-import React from 'react'
+import React, { FC } from 'react'
+
+import { useListCalls } from '@/components/hooks/useListCalls'
 
 import styles from './FilterOptions.module.scss'
 
 const { RangePicker } = DatePicker
 
-const cn = require('clsx')
+// const cn = require('clsx')
 
-const FilterOptions = () => {
+interface IFilterOptionsProps {
+	closeFilterOptions: () => void
+}
+
+const FilterOptions: FC<IFilterOptionsProps> = ({ closeFilterOptions }) => {
+	const { setStartEndDateFilter } = useListCalls()
+
+	const onChange = (date: any, dateString: string[]) => {
+		let newDates = { date_start: dateString[0], date_end: dateString[1] }
+		setStartEndDateFilter(newDates)
+		closeFilterOptions()
+	}
+
 	return (
 		<div className={styles.filterOptionsWrapper}>
 			<ul className={styles.filterOptions}>
@@ -26,6 +40,7 @@ const FilterOptions = () => {
 						bordered={false}
 						className={styles.dataPicker}
 						separator={'-'}
+						onChange={onChange}
 					/>
 				</li>
 			</ul>

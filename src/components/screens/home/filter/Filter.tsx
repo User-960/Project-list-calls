@@ -4,7 +4,7 @@ import Select from 'react-select'
 import { useListCalls } from '@/components/hooks/useListCalls'
 
 import styles from './Filter.module.scss'
-import FilterDate from './filterDate/filterDate'
+import FilterDate from './filterDate/FilterDate'
 
 const Filter = () => {
 	const { currentTypeCallFilter, setCurrentTypeCallFilter } = useListCalls()

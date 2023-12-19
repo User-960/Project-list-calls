@@ -11,13 +11,16 @@ import FilterOptions from './filterOptions/FilterOptions'
 const cn = require('clsx')
 
 const FilterDate = () => {
-	const { currentTypeCallFilter, setCurrentTypeCallFilter } = useListCalls()
 	const [openFilterOptions, setOpenFilterOptions] = useState<boolean>(false)
 
 	return (
 		<>
 			<div className={styles.filterDays}>
-				{openFilterOptions && <FilterOptions />}
+				{openFilterOptions && (
+					<FilterOptions
+						closeFilterOptions={() => setOpenFilterOptions(false)}
+					/>
+				)}
 				<button className={cn(styles.filterBtn, styles.filterLeftBtn)}></button>
 				<button
 					className={styles.daysBtn}

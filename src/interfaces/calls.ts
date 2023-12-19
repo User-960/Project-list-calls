@@ -61,3 +61,8 @@ export interface ICallRecord {
 	recordId: string | number
 	partnershipId: string | number
 }
+
+export interface IStartEndDateFilter {
+	date_start: string
+	date_end: string
+}

@@ -8,7 +8,7 @@ import {
 } from 'react'
 import { createContext } from 'react'
 
-import { ICall } from '@/interfaces/calls'
+import { ICall, IStartEndDateFilter } from '@/interfaces/calls'
 
 type TypeContext = {
 	listCalls: ICall[]
@@ -32,6 +32,9 @@ type TypeContext = {
 
 	openSound: number
 	setOpenSound: Dispatch<SetStateAction<number>>
+
+	startEndDateFilter: null | IStartEndDateFilter
+	setStartEndDateFilter: Dispatch<SetStateAction<null | IStartEndDateFilter>>
 }
 
 export const ListCallsContext = createContext<TypeContext>({
@@ -55,7 +58,10 @@ export const ListCallsContext = createContext<TypeContext>({
 	setIsSortDate: () => {},
 
 	openSound: 0,
-	setOpenSound: () => {}
+	setOpenSound: () => {},
+
+	startEndDateFilter: null,
+	setStartEndDateFilter: () => {}
 })
 
 const ListCallsProvider: FC<PropsWithChildren> = ({ children }) => {
@@ -76,6 +82,9 @@ const ListCallsProvider: FC<PropsWithChildren> = ({ children }) => {
 	const [isSortDate, setIsSortDate] = useState<boolean>(false)
 
 	const [openSound, setOpenSound] = useState<number>(0)
+
+	const [startEndDateFilter, setStartEndDateFilter] =
+		useState<null | IStartEndDateFilter>(null)
 
 	useEffect(() => {
 		listCalls.forEach(call => {
@@ -150,7 +159,10 @@ const ListCallsProvider: FC<PropsWithChildren> = ({ children }) => {
 				setIsSortDate,
 
 				openSound,
-				setOpenSound
+				setOpenSound,
+
+				startEndDateFilter,
+				setStartEndDateFilter
 			}}
 		>
 			{children}

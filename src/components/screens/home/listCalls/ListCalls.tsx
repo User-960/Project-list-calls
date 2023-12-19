@@ -26,13 +26,14 @@ const cn = require('clsx')
 const ListCalls = () => {
 	const { isLoading, queryListCalls } = useGetCalls()
 	const { queryListCallsDate } = useGetCallsDate()
+
 	const {
 		listCalls,
 		downloadRecord,
 		filteredListCalls,
 		openSound,
 		setOpenSound,
-		setSortDurationUpDown
+		startEndDateFilter
 	} = useListCalls()
 	const { queryRecord } = useGetRecord()
 	// const [openSoundPlayer, setOpenSoundPlayer] = useState<boolean>(false)
@@ -40,8 +41,21 @@ const ListCalls = () => {
 
 	useEffect(() => {
 		queryListCalls()
-		queryListCallsDate({ data_start: '2023-04-19', data_end: '2023-12-19' })
-	}, [])
+
+		if (startEndDateFilter !== null) {
+			console.log(startEndDateFilter)
+			queryListCallsDate(startEndDateFilter)
+		}
+
+		// let day_1 = new Date(2023, 12, 19),
+		// 	day_2 = new Date(2023, 12, 16)
+
+		// function diffDates(day_one: any, day_two: any) {
+		// 	return (day_one - day_two) / (60 * 60 * 24 * 1000)
+		// }
+
+		// console.log(diffDates(day_2, day_1))
+	}, [startEndDateFilter])
 
 	const downloadRecordServer = (call_id: string | number): any => {
 		const currentCall = listCalls.filter(call => call.id === call_id)
