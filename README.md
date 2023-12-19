@@ -10,7 +10,7 @@ The project implemented list of incoming and outgoing calls with some filters an
 
 - Programming languages: HTML, CSS, TypeScript;
 - Preprocessor: SCSS;
-- Libraries: React, Next.js, CSS Modules, axios, js-cookie, clsx, @tanstack/react-query, react-select, use-sound;
+- Libraries: React, Next.js, CSS Modules, axios, Ant Design, clsx, @tanstack/react-query, react-select, use-sound;
 
 ## To clone repository
 
