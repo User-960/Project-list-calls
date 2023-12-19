@@ -12,7 +12,7 @@ const cn = require('clsx')
 
 const FilterDate = () => {
 	const [openFilterOptions, setOpenFilterOptions] = useState<boolean>(false)
-	const [dateCount, setDateCount] = useState<string>('')
+	const [dateCount, setDateCount] = useState<string>('3 дня')
 
 	return (
 		<>
@@ -23,7 +23,10 @@ const FilterDate = () => {
 						setDateCount={setDateCount}
 					/>
 				)}
-				<button className={cn(styles.filterBtn, styles.filterLeftBtn)}></button>
+				<button
+					className={cn(styles.filterBtn, styles.filterLeftBtn)}
+					onClick={() => setOpenFilterOptions(prev => !prev)}
+				></button>
 				<button
 					className={styles.daysBtn}
 					onClick={() => setOpenFilterOptions(prev => !prev)}
@@ -39,6 +42,7 @@ const FilterDate = () => {
 				</button>
 				<button
 					className={cn(styles.filterBtn, styles.filterRightBtn)}
+					onClick={() => setOpenFilterOptions(prev => !prev)}
 				></button>
 			</div>
 		</>

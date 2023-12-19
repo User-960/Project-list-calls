@@ -4,7 +4,6 @@ import React, { useEffect } from 'react'
 import Loader from '@/ui/loader/Loader'
 import SoundPlayer from '@/ui/soundPlayer/SoundPlayer'
 
-import { useGetCalls } from '@/components/hooks/useGetCalls'
 import { useGetCallsDate } from '@/components/hooks/useGetCallsDate'
 import { useGetRecord } from '@/components/hooks/useGetRecord'
 import { useListCalls } from '@/components/hooks/useListCalls'
@@ -17,6 +16,7 @@ import outgoingCall from '../../../../../public/images/outgoingCall.svg'
 
 import styles from './ListCalls.module.scss'
 import NavList from './navList/NavList'
+import { calcStartEndDate } from '@/helpers/calcStartEndDate'
 import { formatDate } from '@/helpers/formatDate'
 import { formatDuration } from '@/helpers/formatDuration'
 import { formatPhone } from '@/helpers/formatPhone'
@@ -24,8 +24,7 @@ import { formatPhone } from '@/helpers/formatPhone'
 const cn = require('clsx')
 
 const ListCalls = () => {
-	const { isLoading, queryListCalls } = useGetCalls()
-	const { queryListCallsDate } = useGetCallsDate()
+	const { isLoading, queryListCallsDate } = useGetCallsDate()
 
 	const {
 		listCalls,
@@ -33,18 +32,22 @@ const ListCalls = () => {
 		filteredListCalls,
 		openSound,
 		setOpenSound,
-		startEndDateFilter
+		startEndDateFilter,
+		setStartEndDateFilter
 	} = useListCalls()
 	const { queryRecord } = useGetRecord()
-	// const [openSoundPlayer, setOpenSoundPlayer] = useState<boolean>(false)
-	// const [openSound, setOpenSound] = useState<number>(0)
 
 	useEffect(() => {
-		queryListCalls()
+		const dateString = calcStartEndDate('3 дня')
+		let newDates = { date_start: dateString[0], date_end: dateString[1] }
+		setStartEndDateFilter(newDates)
+	}, [])
 
+	useEffect(() => {
 		if (startEndDateFilter !== null) {
 			console.log(startEndDateFilter)
 			queryListCallsDate(startEndDateFilter)
+			setStartEndDateFilter(null)
 		}
 	}, [startEndDateFilter])
 
