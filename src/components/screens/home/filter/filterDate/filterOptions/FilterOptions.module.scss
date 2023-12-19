@@ -48,6 +48,13 @@
 	color: #adbfdf;
 }
 
+.activeDate {
+	font-size: 14px;
+	weight: 400;
+	line-height: 28px;
+	color: $blue;
+}
+
 @media (max-width: 442px) {
 	.filterOptionsWrapper {
 		top: 36px;

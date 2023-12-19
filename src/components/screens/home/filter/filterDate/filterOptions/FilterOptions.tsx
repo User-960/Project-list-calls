@@ -6,15 +6,18 @@ import { useListCalls } from '@/components/hooks/useListCalls'
 import styles from './FilterOptions.module.scss'
 import { calcStartEndDate } from '@/helpers/calcStartEndDate'
 
+const cn = require('clsx')
 const { RangePicker } = DatePicker
 
 interface IFilterOptionsProps {
 	closeFilterOptions: () => void
+	dateCount: string
 	setDateCount: Dispatch<SetStateAction<string>>
 }
 
 const FilterOptions: FC<IFilterOptionsProps> = ({
 	closeFilterOptions,
+	dateCount,
 	setDateCount
 }) => {
 	const { setStartEndDateFilter } = useListCalls()
@@ -40,7 +43,9 @@ const FilterOptions: FC<IFilterOptionsProps> = ({
 						saveStartEndDate([], calcStartEndDate('3 дня'), '3 дня')
 					}
 				>
-					3 дня
+					<p className={cn({ [styles.activeDate]: dateCount === '3 дня' })}>
+						3 дня
+					</p>
 				</li>
 				<li
 					className={styles.itemOptions}
@@ -48,7 +53,9 @@ const FilterOptions: FC<IFilterOptionsProps> = ({
 						saveStartEndDate([], calcStartEndDate('7 дней'), 'Неделя')
 					}
 				>
-					Неделя
+					<p className={cn({ [styles.activeDate]: dateCount === 'Неделя' })}>
+						Неделя
+					</p>
 				</li>
 				<li
 					className={styles.itemOptions}
@@ -56,7 +63,9 @@ const FilterOptions: FC<IFilterOptionsProps> = ({
 						saveStartEndDate([], calcStartEndDate('30 дней'), 'Месяц')
 					}
 				>
-					Месяц
+					<p className={cn({ [styles.activeDate]: dateCount === 'Месяц' })}>
+						Месяц
+					</p>
 				</li>
 				<li
 					className={styles.itemOptions}
@@ -64,7 +73,9 @@ const FilterOptions: FC<IFilterOptionsProps> = ({
 						saveStartEndDate([], calcStartEndDate('365 дней'), 'Год')
 					}
 				>
-					Год
+					<p className={cn({ [styles.activeDate]: dateCount === 'Год' })}>
+						Год
+					</p>
 				</li>
 				<li className={styles.itemOptions}>
 					<label htmlFor='dataPicker' className={styles.labelInput}>

@@ -20,6 +20,7 @@ const FilterDate = () => {
 				{openFilterOptions && (
 					<FilterOptions
 						closeFilterOptions={() => setOpenFilterOptions(false)}
+						dateCount={dateCount}
 						setDateCount={setDateCount}
 					/>
 				)}
@@ -31,13 +32,14 @@ const FilterDate = () => {
 					className={styles.daysBtn}
 					onClick={() => setOpenFilterOptions(prev => !prev)}
 				>
-					<Image
+					{/* <Image
 						src={iconCalendar}
 						alt='icon of calendar'
 						width={16}
 						height={18}
 						draggable={false}
-					/>
+					/> */}
+					<div className={styles.iconCalendar}></div>
 					<p className={styles.daysMount}>{dateCount}</p>
 				</button>
 				<button

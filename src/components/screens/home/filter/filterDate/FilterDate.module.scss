@@ -18,8 +18,23 @@
 	align-items: center;
 }
 
+.iconCalendar {
+	width: 16px;
+	height: 18px;
+
+	background-image: url('../../../../../../public/images/iconCalendar.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.iconCalendar:hover {
+	background-image: url('../../../../../../public/images/iconCalendarBlue.svg');
+	transition: background-image 0.2s ease-in-out;
+}
+
 .daysMount {
 	margin-left: 8px;
+	color: $blue;
 }
 
 .filterBtn {
